@@ -3,11 +3,15 @@ import {
   mount
 } from 'enzyme';
 import CommentBox from './CommentBox';
+import Root from '../../Root';
 
 let wrapped, textArea, button;
 
 beforeEach(() => {
-  wrapped = mount( < CommentBox / > );
+  wrapped = mount( 
+  <Root>
+    < CommentBox />
+  </Root>);
   textArea = wrapped.find('textarea');
   button = wrapped.find('button');
 });
