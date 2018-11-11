@@ -2,9 +2,11 @@ import React from 'react';
 import CommentList from '../ComponentList/CommentList';
 import CommentBox from '../ComponentBox/CommentBox';
 
-export default () => {
-  return <div>
-    <CommentList />
+function App() {
+  return <>
     <CommentBox />
-  </div>
+    <CommentList />
+  </>
 }
+
+export default App;

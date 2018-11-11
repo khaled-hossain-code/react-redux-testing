@@ -21,6 +21,7 @@ class CommentBox extends Component {
       comment: ''
     })
   }
+
   render() {
     return (
       <form onSubmit={this.onSubmit}>
