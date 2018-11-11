@@ -1,19 +1,23 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './reducers';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
-function store({initialState = {}}){
-  return createStore(reducers, 
+import rootReducer from './reducers';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export default ({children, initialState = {}}) => {
+  const store = createStore(rootReducer,
     initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(
+      applyMiddleware(thunk)
     )
-} 
+  )
 
-export default props => {
   return (
-    <Provider store={store(props)}>
-      {props.children}
+    <Provider store={store}>
+      {children}
     </Provider>
   );
 }
