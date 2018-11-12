@@ -24,6 +24,7 @@ class CommentBox extends Component {
 
   render() {
     return (
+      <>
       <form onSubmit={this.onSubmit}>
         <h4>Add a Comment</h4>
         <textarea value={this.state.comment} onChange={this.onComment} name="comment" id="commentBox" cols="30" rows="10"></textarea>
@@ -31,6 +32,8 @@ class CommentBox extends Component {
           <button>Submit Comment</button>
         </div>
       </form>
+      <button onClick={this.props.fetchComments}>Fetch Comments</button>
+      </>
     )
   }
 }
