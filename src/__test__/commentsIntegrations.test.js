@@ -10,7 +10,7 @@ beforeEach(() => {
     status: 200,
     response:
         [{
-
+          name: 'comment1'
         }]
   });
 });
@@ -19,7 +19,7 @@ afterEach(() => {
   moxios.uninstall();
 });
 
-it('can fetch a list of comments and diplay them', () => {
+it('can fetch a list of comments and diplay them', (done) => {
   const wrapped = mount(
     <Root>
       <App />
@@ -28,5 +28,10 @@ it('can fetch a list of comments and diplay them', () => {
 
   wrapped.find('.fetch-comments').simulate('click');
   
-  expect(wrapped.find('li').length).toEqual(500);
+  moxios.wait(() => {
+    wrapped.update();
+    expect(wrapped.find('li').length).toEqual(1);
+    done();
+    wrapped.unmount();
+  })
 })
