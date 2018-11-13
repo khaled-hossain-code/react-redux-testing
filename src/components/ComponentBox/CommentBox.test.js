@@ -22,7 +22,7 @@ afterEach(() => {
 
 it('renders a textarea and a button', () => {
   expect(textArea.length).toEqual(1);
-  expect(button.length).toEqual(1);
+  expect(button.length).toEqual(2);
 });
 
 describe('CommentBox component', () => {
