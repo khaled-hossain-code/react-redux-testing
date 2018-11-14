@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SAVE_COMMENT, FETCH_COMMENTS } from './types';
+import { SAVE_COMMENT, FETCH_COMMENTS, CHANGE_AUTH } from './types';
 
 function saveComment(comment) {
   return {
@@ -18,7 +18,14 @@ function fetchComments() {
   }
 }
 
+function changeAuth() {
+  return {
+    type: CHANGE_AUTH
+  }
+}
+
 export {
   saveComment,
-  fetchComments
+  fetchComments,
+  changeAuth
 }
